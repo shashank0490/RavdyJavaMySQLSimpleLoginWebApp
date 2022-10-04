@@ -18,7 +18,7 @@ jobs:
       
     - name: run a multiline script
       run: 
-        what is in the directory ?
+        echo what is in the directory ?
         ls -a
         echo
         echo is java installed ?
