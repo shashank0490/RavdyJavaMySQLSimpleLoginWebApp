@@ -9,39 +9,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v2
+    - uses : actions/checkout@v2
     
     - name: run a oneline script
-      run : echo hello, world !
+      run : sh ./githubactions-script.sh
       
     - name: run a multiline script
       run:  | 
-        echo 1. what is in the directory ?
+        echo nothing to see in multiline script
+        echo content of folder
         ls -a
-        echo
-        echo 2. is java installed ?
-        java -version
-        echo
-        echo 3. is git installed ?
-        git --version
-        echo 4. what about build tools
-        mvn --version
-        gradle --version
-        ant -version
-        echo 5. where is android sdk root ?
-        echo $ANDROID_SDK_ROOT
-        echo 6. where is selenium jars ?
-        echo $SELENIUM_JAR_PATH
-        echo 7. what is  workspace location ?
-        echo $RUNNER_WORKSPACE
-        echo 8. who is running the script ?
-        whoami
-        echo 9. how is the disc layout ?
-        df
-        echo 10. what environment variables are available ?
-        printenv
       
     
     
