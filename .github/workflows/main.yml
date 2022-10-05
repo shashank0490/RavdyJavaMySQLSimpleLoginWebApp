@@ -7,7 +7,7 @@ on:
     branches: [ master ]
   
 jobs:
-  build:
+  build-on-linux:
     runs-on: ubuntu-latest
     steps:
     - name: check disc space
@@ -28,6 +28,23 @@ jobs:
         git --version
     - name: log disc space
       run: df
+  build-on-windows:
+    runs-on: windows-latest
+    steps:
+    - name: check contents of disc
+      run: ls
+    - uses : actions/checkout@v3
+    - name: setup jdk
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'corretto'
+        java-version: '11'
+    - name: build with maven
+      run: mvn -B package --file pom.xml
+    - name: check execution policy
+      run: |
+        Get-ExectionPolicy
+        env
         
     
     
